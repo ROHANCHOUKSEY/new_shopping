@@ -155,14 +155,22 @@ export default function BlogPost() {
               </div>
               <div className='small-images-container'>
                 {/* Mapping through blogPost[0]?.image */}
-                {blogPost[0]?.image?.map((item, i) => (
-                  <Image src={urlfromimage(item?.asset?._ref)} key={i} className={i === index ? 'small-image selected-image' : 'small-image'} alt='image' onMouseEnter={() => setIndex(i)} width={100} height={100}/>
-                ))}
+                {blogPost[0]?.image?.map((item) => (
+                <Image
+                  src={urlfromimage(item?.asset?._ref)}
+                  key={item.id} // Use a unique identifier here
+                  className={item.id === index ? 'small-image selected-image' : 'small-image'}
+                  alt='image'
+                  onMouseEnter={() => setIndex(item.id)} // Assuming you want to set the index based on the item's id
+                  width={100}
+                  height={100}/>))}
+
               </div>
             </div>
             <div className='product-detail-desc'>
                 <h1>{blogPost[0].name}</h1> 
                 <div className='reviews'>
+                  
                   <div>
                     <AiFillStar/>  
                     <AiFillStar/>  
