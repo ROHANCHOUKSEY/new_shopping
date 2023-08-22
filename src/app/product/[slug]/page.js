@@ -207,9 +207,8 @@ export default function BlogPost() {
                   <h2>You may also like</h2>
                   <div className='marquee'>
                   <div className='maylike-products-container track'>
-                    {allProducts.map((item) => (
-                      <Product props={item}/>
-                    ))}
+                  {allProducts.map((item) => (
+                    <Product key={item.id} props={item} />))}
                   </div> 
               </div>
             </div>
