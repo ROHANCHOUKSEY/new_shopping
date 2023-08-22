@@ -1,6 +1,8 @@
 import React from 'react';
 import Link from 'next/link';
 // import {urlForImage} from '../sanity/lib/image';
+import Image from 'next/image';
+
 
 
 const HeroBanner = ({props}) => { 
@@ -20,7 +22,7 @@ const HeroBanner = ({props}) => {
         <p className="beats-solo">{props[0].smallText}</p>
         <h3>{props[0].midText}</h3>
         <h1>{props[0].largeText1}</h1>
-        <img src={image} alt="headphones" className="hero-banner-image"/>  
+        <Image src={image} alt="headphones" className="hero-banner-image" width={100} height={100}/>  
         <div>
           <Link href={`/product/${props.product}`}>
               <button type="button">{props[0].buttonText}</button>

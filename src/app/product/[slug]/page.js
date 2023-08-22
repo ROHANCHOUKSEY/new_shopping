@@ -9,7 +9,7 @@ import Navbar from '../../../../components/Navbar';
 import Product from '../../../../components/Product';
 import { setGlobalState, useGlobalState } from '../../../../context/state';
 import { Toaster, toast } from 'react-hot-toast'; 
- 
+import Image from 'next/image'; 
 
 
 export default function BlogPost() {
@@ -151,12 +151,12 @@ export default function BlogPost() {
           <div className='product-detail-container'>
             <div>
               <div className='image-container'>
-                <img src={image} className='product-detail-image'/>
+                <Image src={image} alt='image' className='product-detail-image' width={100} height={100} />
               </div>
               <div className='small-images-container'>
                 {/* Mapping through blogPost[0]?.image */}
                 {blogPost[0]?.image?.map((item, i) => (
-                  <img src={urlfromimage(item?.asset?._ref)} key={i} className={i === index ? 'small-image selected-image' : 'small-image'} onMouseEnter={() => setIndex(i)}/>
+                  <Image src={urlfromimage(item?.asset?._ref)} key={i} className={i === index ? 'small-image selected-image' : 'small-image'} alt='image' onMouseEnter={() => setIndex(i)} width={100} height={100}/>
                 ))}
               </div>
             </div>

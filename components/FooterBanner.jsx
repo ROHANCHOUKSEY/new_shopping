@@ -1,7 +1,7 @@
 import React from 'react'
 import Link from 'next/link';
 import product from '../sanity/schemas/product';
-
+import Image from 'next/image';
 
 const FooterBanner = ({props:banners}) => {
   
@@ -32,7 +32,7 @@ const FooterBanner = ({props:banners}) => {
            <button type='button'>{banners[0].buttonText}</button>
           </Link>
         </div>
-        <img  src={image} className='footer-banner-image'/>
+        <Image  src={image} alt='image' className='footer-banner-image' width={100} height={100}/>
       </div>
     </div>
   )
