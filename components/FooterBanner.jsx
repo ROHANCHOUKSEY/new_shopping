@@ -32,7 +32,7 @@ const FooterBanner = ({props:banners}) => {
            <button type='button'>{banners[0].buttonText}</button>
           </Link>
         </div>
-        <Image  src={image} alt='image' className='footer-banner-image' width={100} height={100}/>
+        <Image  src={image} alt='' className='footer-banner-image' width={150} height={250}/>
       </div>
     </div>
   )

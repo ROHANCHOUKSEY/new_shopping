@@ -1,8 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-
-
 import { urlForImage } from '../sanity/lib/image';
 
   
@@ -21,7 +19,7 @@ const Product = ({props}) => {
         <div className='product-card'> 
             <Image  
             src = {image}
-            alt='image'
+            alt=''
             // src={urlForImage(props.image && props.image[0])}
             width={250}
             height={250}

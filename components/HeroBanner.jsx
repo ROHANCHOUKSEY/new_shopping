@@ -4,7 +4,6 @@ import Link from 'next/link';
 import Image from 'next/image';
 
 
-
 const HeroBanner = ({props}) => { 
   let nk =  "";
   nk = props[0].image?.asset?._ref;
@@ -22,7 +21,7 @@ const HeroBanner = ({props}) => {
         <p className="beats-solo">{props[0].smallText}</p>
         <h3>{props[0].midText}</h3>
         <h1>{props[0].largeText1}</h1>
-        <Image src={image} alt="headphones" className="hero-banner-image" width={100} height={100}/>  
+        <Image src={image} alt="headphones" className="hero-banner-image" width={450} height={550}/>  
         <div>
           <Link href={`/product/${props.product}`}>
               <button type="button">{props[0].buttonText}</button>
