@@ -8,6 +8,8 @@ import { useStateContext } from '../context/StateContext';
 // import { urlFor } from '../sanity/lib/client';
 import { setGlobalState, useGlobalState} from '../context/state';
 import './cart.css';
+import Image from 'next/image';
+
 
 const Cart = ({ setShowCart, blogPost }) => {
   const { increaseQuantity, decreaseQuantity} = useStateContext();
@@ -112,7 +114,7 @@ const Cart = ({ setShowCart, blogPost }) => {
           <div className='product-container'>
             {cartItems.length >= 1 && cartItems.map((item) => (
               <div className='product' key={item._id}>
-               <img src={urlfromimage(item)} alt="image" className='cart-product-image' />
+                <Image src={urlfromimage(item)} alt='image' className='cart-product-image'width={100} height={100}/>
                 <div className='item-desc'>
                   <div className='flex top'>
                     <h5>{item.name}</h5>
