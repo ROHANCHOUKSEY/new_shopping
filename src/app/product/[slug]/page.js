@@ -156,7 +156,7 @@ export default function BlogPost() {
               <div className='small-images-container'>
                 {/* Mapping through blogPost[0]?.image */}
                 {blogPost[0]?.image?.map((item, i) => (
-                  <img src={urlfromimage(item?.asset?._ref)} key={i} className={i === index ? 'small-image selected-image' : 'small-image'} onMouseEnter={() => setIndex(i)}/>
+                  <Image src={urlfromimage(item?.asset?._ref)} key={i} className={i === index ? 'small-image selected-image' : 'small-image'} onMouseEnter={() => setIndex(i)} height={50} width={50}/>
                 ))}
               </div>
             </div>
