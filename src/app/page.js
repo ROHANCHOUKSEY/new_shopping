@@ -41,7 +41,7 @@ const Home = () => {
 
     
       <div className="products-container">
-        {products?.map((product) => <Product props={product} />)}
+        {products?.map((product) => <Product key={product.id} props={product} />)}
       </div>
 
       <FooterBanner props={banners}/>
