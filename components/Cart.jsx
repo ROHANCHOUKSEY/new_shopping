@@ -111,8 +111,8 @@ const Cart = ({ setShowCart, blogPost }) => {
 
           <div className='product-container'>
             {cartItems.length >= 1 && cartItems.map((item) => (
-              <div className='product' ket={item._id}>
-                <img src={urlfromimage(item)} className='cart-product-image'/>
+              <div className='product' key={item._id}>
+               <img src={urlfromimage(item)} alt="image" className='cart-product-image' />
                 <div className='item-desc'>
                   <div className='flex top'>
                     <h5>{item.name}</h5>
