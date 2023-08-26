@@ -9,6 +9,7 @@ import { useStateContext } from '../context/StateContext';
 import { setGlobalState, useGlobalState} from '../context/state';
 import './cart.css';
 import Image from 'next/image';
+// import  checkout  from '../src/checkout'; 
 
 const Cart = ({ setShowCart, blogPost }) => {
   const { increaseQuantity, decreaseQuantity} = useStateContext();
@@ -16,6 +17,27 @@ const Cart = ({ setShowCart, blogPost }) => {
   let [cartItems] = useGlobalState("cartItems");
   let [totalPrice] = useGlobalState("totalPrice");
   const [quantity, setquantity] = useState(0);
+
+  // const handleCheckout = async () => {
+  //   const stripe = await checkout();
+
+  //   const response = await fetch('/api/stripe', {
+  //     method: 'POST',
+  //     headers: {
+  //       'Content-Type': 'application/json',
+  //     },
+  //     body: JSON.stringify(cartItems), 
+  //   });
+
+  //   if(response.statusCode === 500) return;
+
+  //   const data = await response.json();
+
+  //   toast.loading('Redirection...');
+
+  //   stripe.redirectToCheckout({sessionId: data.id});
+  // }
+
   
   console.log("cartItems:", cartItems);
   console.log("totalPrice:", totalPrice);
@@ -151,11 +173,27 @@ const Cart = ({ setShowCart, blogPost }) => {
                 <h3>Subtotal:</h3>
                 <h3>₹{totalPrice}</h3>
               </div>
+
+              {/* <div className="btn-container">
+                <button type='button' className='btn' onClick={(() => {
+                  checkout({
+                    lineItems:[{price:"price_1NiMy5SIPbtDHMKAIpZxhyKr", quantity:1}]
+                  })
+                })}>PAY</button>
+              </div> */}
+              
+              <div className="btn-container">
+                <button type='button' className='btn' onClick="">PAY</button>
+              </div>
+
+
             </div>
+            
           )}
         
       </div>
     </div>
+    
   );
 };
 
