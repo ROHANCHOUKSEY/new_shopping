@@ -4,12 +4,13 @@ import Link from 'next/link';
 import { AiOutlineMinus, AiOutlinePlus, AiOutlineLeft, AiOutlineRight, AiOutlineShopping } from 'react-icons/ai';
 import { TiDeleteOutline } from 'react-icons/ti';
 import toast from 'react-hot-toast';
-import { useStateContext } from '../context/StateContext';
+import { useStateContext } from '../context/StateContext'; 
 // import { urlFor } from '../sanity/lib/client';
 import { setGlobalState, useGlobalState} from '../context/state';
 import './cart.css';
 import Image from 'next/image';
-// import  checkout  from '../src/checkout'; 
+import  getStripe  from '../sanity/lib/getStripe'; 
+// import stripe from '../src/app/api/stripe'
 
 const Cart = ({ setShowCart, blogPost }) => {
   const { increaseQuantity, decreaseQuantity} = useStateContext();
@@ -18,29 +19,46 @@ const Cart = ({ setShowCart, blogPost }) => {
   let [totalPrice] = useGlobalState("totalPrice");
   const [quantity, setquantity] = useState(0);
 
-  // const handleCheckout = async () => {
-  //   const stripe = await checkout();
-
-  //   const response = await fetch('/api/stripe', {
-  //     method: 'POST',
-  //     headers: {
-  //       'Content-Type': 'application/json',
-  //     },
-  //     body: JSON.stringify(cartItems), 
-  //   });
-
-  //   if(response.statusCode === 500) return;
-
-  //   const data = await response.json();
-
-  //   toast.loading('Redirection...');
-
-  //   stripe.redirectToCheckout({sessionId: data.id});
-  // }
-
   
-  console.log("cartItems:", cartItems);
-  console.log("totalPrice:", totalPrice);
+  
+
+
+  const handleCheckout = async () => {
+    const stripe = await getStripe();
+  
+    const response = await fetch('/src/app/api/stripe', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(cartItems),
+    });
+  
+    if (response.status === 500) {
+      return; 
+    }
+  
+    const data = await response.json();
+  
+    toast.loading('Redirecting...');
+  
+    stripe.redirectToCheckout({ sessionId: data.id });
+  }
+  
+  
+  
+  // const handleCheckout = async ({single}) => {
+  //   const stripe = await getStripe();
+  //   await stripe.redirectToCheckout({
+  //     mode : "payment",
+  //     single,
+  //     successUrl: `${window.location.origin}? session_id = {CHECKOUT_SESSION_ID}`,
+  //     cancelUrl: window.location.origin
+  //   })
+  // }
+  
+
+
 
 
   function urlfromimage(props){
@@ -183,7 +201,8 @@ const Cart = ({ setShowCart, blogPost }) => {
               </div> */}
               
               <div className="btn-container">
-                <button type='button' className='btn' onClick="">PAY</button>
+
+                <button type='button' className='btn' onClick={handleCheckout}>PAY</button>
               </div>
 
 

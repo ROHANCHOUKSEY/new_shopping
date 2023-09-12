@@ -30,7 +30,7 @@ const Home = () => {
 
     getProducts();
   }, []);
-
+ 
   return (
     <div>
       <HeroBanner props = {banners}/>
@@ -41,7 +41,7 @@ const Home = () => {
 
     
       <div className="products-container">
-        {products?.map((product) => <Product key={product.id} props={product} />)}
+        {products?.map((product) => <Product key={product.productId} props={product} />)}
       </div>
 
       <FooterBanner props={banners}/>

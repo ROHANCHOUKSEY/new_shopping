@@ -208,19 +208,12 @@ export default function BlogPost() {
                   <div className='marquee'>
                   <div className='maylike-products-container track'>
                   {allProducts.map((item) => (
-                    <Product key={item.id} props={item} />))}
+                    <Product key={item.slug.current} props={item} />))}
                   </div> 
               </div>
             </div>
           <div className='footer-container'>
-      <p>2023 Fill Your Music reserved</p>
-      <p className='icons'>
-        <AiFillFacebook/>
-        <AiFillInstagram/>
-        <AiFillAmazonSquare/>
-        <AiFillApple/>
-      </p>
-    </div>
+    `    </div>
         </div>
       ) : (
         <div>Blog post not found.</div>
